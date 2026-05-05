@@ -1,0 +1,19 @@
+{
+  "name": "aether-maze-visualizer",
+  "private": true,
+  "version": "0.1.0",
+  "main": "electron-main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "cross-env NODE_ENV=development npx electron .",
+    "electron:start": "npm run build && npx electron .",
+    "start:gui": "npm run electron:start"
+  },
+  "devDependencies": {
+    "electron": "^41.5.0",
+    "vite": "^5.0.0"
+  }
+}
