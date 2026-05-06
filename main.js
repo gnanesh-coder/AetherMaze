@@ -26,12 +26,12 @@ class MazeVisualizer {
         this.cellSize = 0;
         this.isAnimating = false;
         this.stopFlag = false;
-        
+
         // Interaction State
         this.isDraggingStart = false;
         this.isDraggingEnd = false;
         this.isDrawingWalls = false;
-        
+
         // Start/End Positions
         this.start = { r: 1, c: 1 };
         this.end = { r: this.rows - 2, c: this.cols - 2 };
@@ -43,11 +43,11 @@ class MazeVisualizer {
     init() {
         this.rows = parseInt(this.sizeSlider.value);
         this.cols = parseInt(this.sizeSlider.value);
-        
+
         // Reset markers if size changed
         this.start = { r: 1, c: 1 };
         this.end = { r: this.rows - 2, c: this.cols - 2 };
-        
+
         // Adjust canvas size to avoid overlap and account for title bar
         const containerSize = Math.min(window.innerWidth - 420, window.innerHeight - 150);
         this.cellSize = Math.floor(containerSize / this.rows);
@@ -89,7 +89,7 @@ class MazeVisualizer {
     handleMouseDown(e) {
         if (this.isAnimating) return;
         const { r, c } = this.getCoords(e);
-        
+
         if (r === this.start.r && c === this.start.c) {
             this.isDraggingStart = true;
         } else if (r === this.end.r && c === this.end.c) {
@@ -133,7 +133,7 @@ class MazeVisualizer {
     toggleWall(r, c, onlyAdd = false) {
         if (r > 0 && r < this.rows - 1 && c > 0 && c < this.cols - 1) {
             if ((r === this.start.r && c === this.start.c) || (r === this.end.r && c === this.end.c)) return;
-            
+
             if (onlyAdd) {
                 this.grid[r][c] = 1;
             } else {
@@ -145,7 +145,7 @@ class MazeVisualizer {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+
         // Draw background
         this.ctx.fillStyle = '#121212';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -178,18 +178,18 @@ class MazeVisualizer {
         if (color) {
             this.ctx.fillStyle = color;
         } else if (r === this.start.r && c === this.start.c) {
-            this.ctx.fillStyle = '#9c27b0'; 
+            this.ctx.fillStyle = '#9c27b0';
         } else if (r === this.end.r && c === this.end.c) {
             this.ctx.fillStyle = '#f44336';
         } else {
             this.ctx.fillStyle = val === 1 ? '#ffffff' : '#121212';
         }
-        
+
         this.ctx.fillRect(c * this.cellSize, r * this.cellSize, this.cellSize, this.cellSize);
-        
+
         if ((r === this.start.r && c === this.start.c) || (r === this.end.r && c === this.end.c)) {
             this.ctx.beginPath();
-            this.ctx.arc(c * this.cellSize + this.cellSize/2, r * this.cellSize + this.cellSize/2, this.cellSize*0.4, 0, Math.PI*2);
+            this.ctx.arc(c * this.cellSize + this.cellSize / 2, r * this.cellSize + this.cellSize / 2, this.cellSize * 0.4, 0, Math.PI * 2);
             this.ctx.fill();
         }
 
@@ -209,11 +209,11 @@ class MazeVisualizer {
         if (this.isAnimating) return;
         this.isAnimating = true;
         this.stopFlag = false;
-        
+
         this.init();
         const visited = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
         await this.recursiveBacktrack(1, 1, visited);
-        
+
         this.isAnimating = false;
         this.draw();
     }
@@ -223,7 +223,7 @@ class MazeVisualizer {
         visited[r][c] = true;
         this.grid[r][c] = 0;
         this.drawCell(r, c);
-        
+
         const dirs = [
             { dr: -2, dc: 0, mr: -1, mc: 0 },
             { dr: 2, dc: 0, mr: 1, mc: 0 },
@@ -302,7 +302,7 @@ class MazeVisualizer {
         const queue = [{ r: this.start.r, c: this.start.c, path: [] }];
         const visited = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
         visited[this.start.r][this.start.c] = true;
-        
+
         let foundPath = null;
         let nodesVisited = 0;
 

@@ -1,8 +1,8 @@
 :root {
   --bg-color: #0a0a0c;
   --panel-bg: rgba(20, 20, 25, 0.7);
-  --accent-color: #00c853; 
-  --secondary-accent: #9c27b0; 
+  --accent-color: #00c853;
+  --secondary-accent: #9c27b0;
   --wall-color: #ffffff;
   --path-color: #121212;
   --start-color: #9c27b0;
@@ -198,14 +198,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem 2rem 2rem; /* Added top padding to make room for legend */
+  padding: 4rem 2rem 2rem 2rem;
+  /* Added top padding to make room for legend */
   background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%);
   overflow: hidden;
 }
 
 #maze-canvas {
   max-width: 95%;
-  max-height: calc(100vh - 12rem); /* Account for padding and legend */
+  max-height: calc(100vh - 12rem);
+  /* Account for padding and legend */
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   image-rendering: pixelated;
@@ -283,7 +285,19 @@ input[type=range]::-webkit-slider-thumb:hover {
   border-radius: 50%;
 }
 
-.color-wall { background: var(--wall-color); }
-.color-path { background: var(--path-color); border: 1px solid rgba(255,255,255,0.1); }
-.color-start { background: var(--start-color); }
-.color-target { background: var(--target-color); }
+.color-wall {
+  background: var(--wall-color);
+}
+
+.color-path {
+  background: var(--path-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.color-start {
+  background: var(--start-color);
+}
+
+.color-target {
+  background: var(--target-color);
+}

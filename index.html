@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aether Maze | Advanced Algorithm Visualizer</title>
-  <meta name="description" content="A high-performance, beautiful maze generation and solving visualizer demonstrating DAA concepts.">
+  <meta name="description"
+    content="A high-performance, beautiful maze generation and solving visualizer demonstrating DAA concepts.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="title-bar">
     <div class="title-bar-drag">AETHER MAZE VISUALIZER</div>
@@ -22,76 +25,90 @@
 
   <div class="app-container">
     <aside class="sidebar">
-    <div class="logo">
-      <h1>AETHER MAZE</h1>
-      <p>Algorithm Visualizer</p>
-    </div>
+      <div class="logo">
+        <h1>AETHER MAZE</h1>
+        <p>Algorithm Visualizer</p>
+      </div>
 
-    <div class="control-group">
-      <span class="control-label">Maze Configuration</span>
-      <button id="btn-generate" class="btn btn-primary">
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-        Generate Maze
-      </button>
-      <button id="btn-solve-all" class="btn">
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-        Find All Paths
-      </button>
-      <button id="btn-solve-shortest" class="btn">
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        Shortest Path
-      </button>
-      <button id="btn-reset" class="btn">
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-        Reset Grid
-      </button>
-    </div>
+      <div class="control-group">
+        <span class="control-label">Maze Configuration</span>
+        <button id="btn-generate" class="btn btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+            </path>
+          </svg>
+          Generate Maze
+        </button>
+        <button id="btn-solve-all" class="btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          Find All Paths
+        </button>
+        <button id="btn-solve-shortest" class="btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Shortest Path
+        </button>
+        <button id="btn-reset" class="btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+            </path>
+          </svg>
+          Reset Grid
+        </button>
+      </div>
 
-    <div class="control-group">
-      <span class="control-label">Animation Speed</span>
-      <input type="range" id="speed-slider" min="1" max="100" value="70">
-    </div>
+      <div class="control-group">
+        <span class="control-label">Animation Speed</span>
+        <input type="range" id="speed-slider" min="1" max="100" value="70">
+      </div>
 
-    <div class="control-group">
-      <span class="control-label">Maze Size</span>
-      <input type="range" id="size-slider" min="11" max="71" step="2" value="31">
-    </div>
+      <div class="control-group">
+        <span class="control-label">Maze Size</span>
+        <input type="range" id="size-slider" min="11" max="71" step="2" value="31">
+      </div>
 
-    <div class="stats">
-      <div class="stat-card">
-        <span id="stat-visited" class="stat-value">0</span>
-        <span class="stat-label">Explored</span>
+      <div class="stats">
+        <div class="stat-card">
+          <span id="stat-visited" class="stat-value">0</span>
+          <span class="stat-label">Explored</span>
+        </div>
+        <div class="stat-card">
+          <span id="stat-length" class="stat-value">0</span>
+          <span class="stat-label">Path Length</span>
+        </div>
       </div>
-      <div class="stat-card">
-        <span id="stat-length" class="stat-value">0</span>
-        <span class="stat-label">Path Length</span>
-      </div>
-    </div>
-  </aside>
+    </aside>
 
-  <main class="main-content">
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-color color-wall"></div>
-        <span>Wall</span>
+    <main class="main-content">
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color color-wall"></div>
+          <span>Wall</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color color-path"></div>
+          <span>Path</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color circle color-start"></div>
+          <span>Start</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color circle color-target"></div>
+          <span>Target</span>
+        </div>
       </div>
-      <div class="legend-item">
-        <div class="legend-color color-path"></div>
-        <span>Path</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color circle color-start"></div>
-        <span>Start</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color circle color-target"></div>
-        <span>Target</span>
-      </div>
-    </div>
-    <canvas id="maze-canvas"></canvas>
-  </main>
+      <canvas id="maze-canvas"></canvas>
+    </main>
   </div>
 
   <script type="module" src="main.js"></script>
 </body>
+
 </html>
